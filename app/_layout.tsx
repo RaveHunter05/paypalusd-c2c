@@ -6,7 +6,9 @@ import {
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-import './global.css';
+import { PortalHost } from '@rn-primitives/portal';
+
+import '../global.css';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
@@ -28,6 +30,7 @@ export default function RootLayout() {
                     options={{ presentation: 'modal', title: 'Modal' }}
                 />
             </Stack>
+            <PortalHost />
             <StatusBar style="auto" />
         </ThemeProvider>
     );

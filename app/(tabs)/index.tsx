@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { Button } from '@/components/ui/button';
+import { View, Text } from 'react-native';
 
 export default function HomeScreen() {
     return (
@@ -12,6 +13,10 @@ export default function HomeScreen() {
             <Text className="text-sm font-bold text-center">
                 with PYUSD made Easy
             </Text>
+
+            <Button className="bg-blue-400 mt-4">
+                <Text className="text-white">Log In</Text>
+            </Button>
         </View>
     );
 }
