@@ -11,5 +11,6 @@ module.exports = function (api) {
             ],
             'nativewind/babel',
         ],
+        // Removed reanimated plugin - using standard animations instead
     };
 };
