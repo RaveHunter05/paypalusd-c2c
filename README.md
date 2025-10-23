@@ -13,4 +13,4 @@ Payments between clients, using PYUSD (stable coin from paypal)
 
 3. Run the command:
 
-`npx expo start`
+`npx expo start --tunnel`
