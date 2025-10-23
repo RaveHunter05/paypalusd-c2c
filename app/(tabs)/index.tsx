@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
 import { View, Text } from 'react-native';
+import ConnectButton from '../components/ConnectButton';
 
 export default function HomeScreen() {
     return (
@@ -14,9 +14,7 @@ export default function HomeScreen() {
                 with PYUSD made Easy
             </Text>
 
-            <Button className="bg-blue-400 mt-4">
-                <Text className="text-white">Log In</Text>
-            </Button>
+            <ConnectButton className="mt-4" />
         </View>
     );
 }
