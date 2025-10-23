@@ -20,7 +20,7 @@ export interface DashboardStats {
 
 export interface CreateOrderRequest {
   vendor_address: string;
-  amount: string;
+  amount: number;
 }
 
 export interface CreateOrderResponse extends Order {}

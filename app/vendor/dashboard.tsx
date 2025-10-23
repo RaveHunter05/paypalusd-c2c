@@ -133,7 +133,7 @@ export default function VendorDashboard() {
           <View className="flex-row items-center justify-center">
             <IconSymbol name="plus.circle.fill" size={32} color="white" />
             <Text className="text-white text-2xl font-bold ml-3">
-              New Payment
+              Request Payment
             </Text>
           </View>
         </TouchableOpacity>
