@@ -1,18 +1,17 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import type {
-  Order,
-  DashboardStats,
   CreateOrderRequest,
   CreateOrderResponse,
-  TransactionFilters,
-  OrderStatus,
+  DashboardStats,
+  Order,
+  TransactionFilters
 } from '@/types/vendor';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Backend API Configuration
 const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 // Re-export types for convenience
-export type { Order, DashboardStats, CreateOrderRequest, CreateOrderResponse };
+export type { CreateOrderRequest, CreateOrderResponse, DashboardStats, Order };
 
 // API Client
 class ApiService {
@@ -51,7 +50,7 @@ class ApiService {
       return {
         order_id: mockOrderId,
         vendor_address: data.vendor_address,
-        amount: data.amount,
+        amount: data.amount.toString(),
         status: 'pending',
         created_at: new Date().toISOString(),
       };
