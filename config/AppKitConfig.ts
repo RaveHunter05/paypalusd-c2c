@@ -1,5 +1,4 @@
-// src/AppKitConfig.ts (or wherever you configure AppKit)
-import '@walletconnect/react-native-compat'; // add this import before using appkit
+import '@walletconnect/react-native-compat';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -8,15 +7,14 @@ import { safeJsonParse, safeJsonStringify } from '@walletconnect/safe-json';
 
 import { createAppKit } from '@reown/appkit-react-native';
 import { WagmiAdapter } from '@reown/appkit-wagmi-react-native';
-import { http, createConfig as createWagmiCoreConfig } from 'wagmi';
-import { mainnet, sepolia } from 'wagmi/chains'; // Or other chains you need
-// ... other adapter imports if any
+import { baseSepolia, mainnet, sepolia } from 'wagmi/chains'; // Base Sepolia for PYUSD
+
 
 const projectId = process.env.EXPO_PUBLIC_PROJECT_ID || ''; // Obtain from https://dashboard.reown.com/
 
 export const wagmiAdapter = new WagmiAdapter({
     projectId,
-    networks: [mainnet, sepolia], // Add all chains you want to support
+    networks: [sepolia, baseSepolia, mainnet], // Sepolia first
 });
 
 const storage: Storage = {
@@ -61,7 +59,7 @@ const metadata = {
 
 export const appKit = createAppKit({
     projectId,
-    networks: [mainnet, sepolia],
+    networks: [baseSepolia, mainnet, sepolia],
     adapters: [wagmiAdapter],
     metadata: metadata,
     defaultNetwork: sepolia,
