@@ -6,18 +6,23 @@ import {
     ScrollView,
     RefreshControl,
     ActivityIndicator,
+    Modal,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAccount } from 'wagmi';
 import { apiService, DashboardStats } from '@/services/api';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import ConnectButton from '../components/ConnectButton';
+import CameraComponent from '../components/CameraComponent';
+
 export default function VendorDashboard() {
     const router = useRouter();
     const { address, isConnected } = useAccount();
     const [stats, setStats] = useState<DashboardStats | null>(null);
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
+    const [showCamera, setShowCamera] = useState<boolean>(false);
+
     const loadStats = async () => {
         if (!address) return;
         try {
@@ -152,7 +157,10 @@ export default function VendorDashboard() {
                     </View>
                 </TouchableOpacity>
                 {/* Make Payment */}
-                <TouchableOpacity className="bg-orange-400 rounded-xl p-6 mb-4 shadow-lg active:opacity-80">
+                <TouchableOpacity
+                    className="bg-orange-400 rounded-xl p-6 mb-4 shadow-lg active:opacity-80"
+                    onPress={() => setShowCamera(true)}
+                >
                     <View className="flex-row items-center justify-center">
                         <IconSymbol
                             name="plus.circle.fill"
@@ -194,6 +202,18 @@ export default function VendorDashboard() {
                     </TouchableOpacity>
                 </View>
                 <ConnectButton />
+                <Modal
+                    visible={showCamera}
+                    animationType="slide"
+                    transparent={true}
+                    onRequestClose={() => {
+                        setShowCamera(!showCamera);
+                    }}
+                >
+                    <CameraComponent
+                        closeCammeraFunction={() => setShowCamera(false)}
+                    />
+                </Modal>
             </View>
         </ScrollView>
     );
