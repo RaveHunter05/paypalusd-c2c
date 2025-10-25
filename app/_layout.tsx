@@ -18,7 +18,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export const unstable_settings = {
-    anchor: '(tabs)',
+    initialRouteName: 'index',
 };
 
 const queryClient = new QueryClient();
@@ -39,6 +39,14 @@ export default function RootLayout() {
                             }
                         >
                             <Stack>
+                                <Stack.Screen
+                                    name="index"
+                                    options={{ headerShown: false }}
+                                />
+                                <Stack.Screen
+                                    name="login"
+                                    options={{ headerShown: false }}
+                                />
                                 <Stack.Screen
                                     name="(tabs)"
                                     options={{ headerShown: false }}
