@@ -12,7 +12,7 @@ export default function HomeScreen() {
     return (
         <View className="flex-1 items-center justify-center bg-white dark:bg-gray-900 text-center px-6">
             <Text className="text-2xl font-bold text-blue-400">
-                Welcome to EasyCripto! 🖐️
+                Welcome to SeamlessPay! 🖐️
             </Text>
             <Text className="text-sm font-bold text-center mt-4 text-gray-800 dark:text-gray-200">
                 C2C and B2C Payments
