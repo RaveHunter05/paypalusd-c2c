@@ -17,6 +17,7 @@ import { useAccount } from 'wagmi';
 export default function GenerateOrder() {
     const router = useRouter();
     const { address, isConnected } = useAccount();
+    const scrowAddress = "0xf43A12BDD996997705155c8b6b1C569FDc786966"
     const [amount, setAmount] = useState<string>('0');
     const [loading, setLoading] = useState(false);
     const [qrData, setQrData] = useState<string | null>(null);
@@ -46,7 +47,7 @@ export default function GenerateOrder() {
         try {
             setLoading(true);
             const response = await apiService.createOrder({
-                vendor_address: address, // VENDEDOR
+                vendor_address: scrowAddress, // SCROW ADDRESS
                 amount: parseFloat(amount),
             });
 
@@ -63,7 +64,7 @@ export default function GenerateOrder() {
             const paymentURI =
                 `https://metamask.app.link/send/${PYUSD_TOKEN}@${CHAIN_ID}/transfer?` +
                 `address=${address}&` + // Dirección del RECEPTOR (VENDEDOR)
-                `uint256=${amountInWei}`; // Monto en wei
+                `uint256=${amountInWei}`; // Monto en wei 
 
             setQrData(paymentURI);
             setOrderId(response.order_id);
