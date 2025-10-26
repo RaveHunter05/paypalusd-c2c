@@ -1,13 +1,13 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
-import ConnectButton from '../components/ConnectButton';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { useAccount } from '@reown/appkit-react-native';
+import { useRouter } from 'expo-router';
+import { Text, TouchableOpacity, View } from 'react-native';
+import ConnectButton from '../components/ConnectButton';
 
 export default function HomeScreen() {
     const router = useRouter();
 
-    const { address, isConnected, chainId } = useAccount();
+    const { isConnected } = useAccount();
 
     return (
         <View className="flex-1 items-center justify-center bg-white dark:bg-gray-900 text-center px-6">
