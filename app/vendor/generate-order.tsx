@@ -63,7 +63,7 @@ export default function GenerateOrder() {
             // 🌟 Generar el Deep Link de Transacción de MetaMask
             const paymentURI =
                 `https://metamask.app.link/send/${PYUSD_TOKEN}@${CHAIN_ID}/transfer?` +
-                `address=${address}&` + // Dirección del RECEPTOR (VENDEDOR)
+                `address=${scrowAddress}&` + // Dirección del RECEPTOR (VENDEDOR)
                 `uint256=${amountInWei}`; // Monto en wei 
 
             setQrData(paymentURI);
